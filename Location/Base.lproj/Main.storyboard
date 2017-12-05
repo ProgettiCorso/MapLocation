@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9J2-ne-fuv">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Location" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PX0-C8-7aE" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="64" width="375" height="559"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <navigationBar contentMode="scaleToFill" barStyle="blackTranslucent" translatesAutoresizingMaskIntoConstraints="NO" id="cPk-95-pYV">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <items>
+                                    <navigationItem id="eag-PV-hkO">
+                                        <nil key="title"/>
+                                        <rightBarButtonItems>
+                                            <barButtonItem style="plain" systemItem="trash" id="eI3-Bt-9Fm">
+                                                <color key="tintColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <connections>
+                                                    <action selector="EliminaMarker:" destination="BYZ-38-t0r" id="h3v-7X-odG"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem title="polylines" style="done" id="TzF-wj-GmP">
+                                                <color key="tintColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <connections>
+                                                    <action selector="PolylineMarkers:" destination="BYZ-38-t0r" id="JHs-6W-NEI"/>
+                                                </connections>
+                                            </barButtonItem>
+                                        </rightBarButtonItems>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="PX0-C8-7aE" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="8A3-4w-uW2"/>
+                            <constraint firstItem="cPk-95-pYV" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="95D-W9-nK9"/>
+                            <constraint firstItem="PX0-C8-7aE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Ci0-nO-7RY"/>
+                            <constraint firstItem="cPk-95-pYV" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="LPk-Ha-Cd5"/>
+                            <constraint firstItem="cPk-95-pYV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="aSI-NZ-wuB"/>
+                            <constraint firstItem="PX0-C8-7aE" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="eEy-FN-MVu"/>
+                            <constraint firstItem="cPk-95-pYV" firstAttribute="top" secondItem="PX0-C8-7aE" secondAttribute="bottom" id="l6L-uM-L5C"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="mAA-2f-lVI">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="search" id="7wK-zi-kdW">
+                            <connections>
+                                <action selector="openSearchAddress:" destination="BYZ-38-t0r" id="Myt-4g-oFB"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="btnElimina" destination="eI3-Bt-9Fm" id="a80-Gn-7Yl"/>
+                        <outlet property="btnPolylines" destination="TzF-wj-GmP" id="gVo-TG-AVK"/>
+                        <outlet property="googleMapsView" destination="PX0-C8-7aE" id="xms-Mj-qlj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="597.60000000000002" y="80.50974512743629"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="NdL-zh-o7m">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9J2-ne-fuv" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="qkF-Uv-Yx5"/>
+                    <toolbarItems/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="DX2-lT-ACe">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="mCB-OK-zw8">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="a2g-l5-RB9"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OcA-z4-mm4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-169" y="81"/>
+        </scene>
+    </scenes>
+</document>
