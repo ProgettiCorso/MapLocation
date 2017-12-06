@@ -10,9 +10,9 @@ $sudo gem install cocoapods
 
 - CocoaPod
 
-pod 'GoogleMaps', '~> 2.1'
+pod 'GoogleMaps'
 
-pod 'GooglePlaces', '~> 2.1'
+pod 'GooglePlaces'
 
 
 - Google Key

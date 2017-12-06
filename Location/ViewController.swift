@@ -27,16 +27,13 @@ class ViewController: UIViewController, GMSAutocompleteViewControllerDelegate, C
     
     func polylines() {
         if (markers.count>2){
-//            polyline.map = nil
+            polyline.map = nil
             if polyVisible == true
             {
             polyline = GMSPolyline(path: path)
             polyline.strokeColor = .red
             polyline.strokeWidth = 5.0
             polyline.map = googleMapsView
-            }
-            else{
-            polyline.map = nil
             }
         }
         else
