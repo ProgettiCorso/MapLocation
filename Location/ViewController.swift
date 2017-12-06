@@ -12,40 +12,41 @@ import GooglePlaces
 
 class ViewController: UIViewController, GMSAutocompleteViewControllerDelegate, CLLocationManagerDelegate {
     @IBOutlet weak var btnElimina: UIBarButtonItem!
-    
     @IBOutlet weak var googleMapsView: GMSMapView!
-    
     @IBOutlet weak var btnPolylines: UIBarButtonItem!
+    @IBOutlet weak var btnChangeMapType: UIBarButtonItem!
+    
     var locationManager = CLLocationManager()
     var markers = [GMSMarker()]
     let path = GMSMutablePath()
     var polyVisible = false
+    var mapTypeValue = false
     var polyline = GMSPolyline(path: nil)
-    @IBAction func EliminaMarker(_ sender: UIBarButtonItem) {
-            googleMapsView.clear()
-    }
     
     func polylines() {
         if (markers.count>2){
             polyline.map = nil
             if polyVisible == true
             {
-            polyline = GMSPolyline(path: path)
-            polyline.strokeColor = .red
-            polyline.strokeWidth = 5.0
-            polyline.map = googleMapsView
+                polyline = GMSPolyline(path: path)
+                polyline.strokeColor = .red
+                polyline.strokeWidth = 5.0
+                polyline.map = googleMapsView
             }
         }
         else
         {
-        let alert = UIAlertController(title: "Attenzione", message: "Seleizonare almeno due posizioni", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .`default`))
-        self.present(alert, animated: true, completion: nil)
+            let alert = UIAlertController(title: "Attenzione", message: "Seleizonare almeno due posizioni", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .`default`))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
+    
+    @IBAction func EliminaMarker(_ sender: UIBarButtonItem) {
+            googleMapsView.clear()
+            polyVisible = false
     }
-    
-    
-    
+
     @IBAction func PolylineMarkers(_ sender: UIBarButtonItem) {
         if(polyVisible == false){
             polyVisible = true
@@ -55,6 +56,18 @@ class ViewController: UIViewController, GMSAutocompleteViewControllerDelegate, C
         }
         
         polylines()
+    }
+    
+    @IBAction func ChangeMapType(_ sender: UIBarButtonItem) {
+        
+        if(mapTypeValue == false){
+            self.googleMapsView.mapType = .hybrid
+            mapTypeValue = true
+        }
+        else{
+            self.googleMapsView.mapType = .normal
+            mapTypeValue = false
+        }
     }
     
     @IBAction func openSearchAddress(_ sender: UIBarButtonItem) {
@@ -71,6 +84,7 @@ class ViewController: UIViewController, GMSAutocompleteViewControllerDelegate, C
         let marker = GMSMarker()
         marker.position = CLLocationCoordinate2D(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
         marker.title = place.name
+        marker.icon = UIImage(named: "marker")
         marker.snippet = "lat: \(place.coordinate.latitude) ,long: \(place.coordinate.longitude)"
         marker.map = googleMapsView
         markers.append(marker)
@@ -80,20 +94,16 @@ class ViewController: UIViewController, GMSAutocompleteViewControllerDelegate, C
         {
             polylines()
             polyVisible = true
-        
         }
-        
     }
     
     func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
         print("ERROR AUTO COMPLETE \(error)")
-        
     }
     
     func wasCancelled(_ viewController: GMSAutocompleteViewController) {
         self.dismiss(animated: true, completion: nil)
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -106,7 +116,5 @@ class ViewController: UIViewController, GMSAutocompleteViewControllerDelegate, C
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
 
