@@ -24,12 +24,20 @@
                                 <items>
                                     <navigationItem id="eag-PV-hkO">
                                         <nil key="title"/>
-                                        <barButtonItem key="leftBarButtonItem" title="Map" style="done" id="w6G-Lg-C2S">
-                                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <connections>
-                                                <action selector="ChangeMapType:" destination="BYZ-38-t0r" id="g8F-ii-FH9"/>
-                                            </connections>
-                                        </barButtonItem>
+                                        <leftBarButtonItems>
+                                            <barButtonItem title="Map" style="done" id="w6G-Lg-C2S">
+                                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <connections>
+                                                    <action selector="ChangeMapType:" destination="BYZ-38-t0r" id="g8F-ii-FH9"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem title="Road" style="done" id="VTM-dl-Aou">
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <connections>
+                                                    <action selector="ViewDirection:" destination="BYZ-38-t0r" id="hOl-QB-SHe"/>
+                                                </connections>
+                                            </barButtonItem>
+                                        </leftBarButtonItems>
                                         <rightBarButtonItems>
                                             <barButtonItem style="plain" systemItem="trash" id="eI3-Bt-9Fm">
                                                 <color key="tintColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -75,6 +83,7 @@
                         <outlet property="btnChangeMapType" destination="w6G-Lg-C2S" id="YDh-Yg-UUu"/>
                         <outlet property="btnElimina" destination="eI3-Bt-9Fm" id="a80-Gn-7Yl"/>
                         <outlet property="btnPolylines" destination="TzF-wj-GmP" id="gVo-TG-AVK"/>
+                        <outlet property="btnRoad" destination="VTM-dl-Aou" id="SH9-eW-XKk"/>
                         <outlet property="googleMapsView" destination="PX0-C8-7aE" id="xms-Mj-qlj"/>
                     </connections>
                 </viewController>
